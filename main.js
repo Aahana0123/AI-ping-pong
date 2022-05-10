@@ -1,4 +1,5 @@
-
+rightWristX = 0;
+rightWristY = 0;
 /*created by prashant shukla */
 
 var paddle2 =10,paddle1=10;
@@ -24,10 +25,28 @@ var ball = {
 function setup(){
   var canvas =  createCanvas(700,600);
   canvas.parent("game_div");
+  video = createCapture(VIDEO);
+  video.size(700 , 600);
+  video.hide();
+  posenet = ml5.poseNet(video , modelLoaded);
+  posenet.on("pose" , gotPoses);
 }
 
+function modelLoaded(){
+  console.log("Model Loaded!")
+}
+
+function gotPoses(results){
+  if (results.length>0) {
+    rightWristX = results[0].pose.rightWrist.x;
+    rightWristY = results[0].pose.rightWrist.y;
+console.log(rightWristX , rightWristY);
+  }
+}
 
 function draw(){
+
+image(video , 0 , 0 , 700 , 600);
 
  background(0); 
 
