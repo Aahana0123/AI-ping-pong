@@ -1,5 +1,7 @@
 rightWristX = 0;
 rightWristY = 0;
+scoreRightWrist = 0;
+
 /*created by prashant shukla */
 
 var paddle2 =10,paddle1=10;
@@ -47,6 +49,14 @@ console.log(rightWristX , rightWristY);
 function draw(){
 
 image(video , 0 , 0 , 700 , 600);
+
+if (condition) {
+  
+}
+
+fill("red");
+stroke("black");
+circle(rightWristX , rightWristY , 20)
 
  background(0); 
 
